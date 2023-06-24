@@ -18,7 +18,7 @@ int _putchar(char);
 typedef struct identifier
 {
 	char type;
-	int (*function)(va_list, unsigned int *);
+	int (*function)(va_list, unsigned long long *);
 } id;
 
 #endif /* MAIN_H */

@@ -10,7 +10,7 @@
   * @args: argument list
   * @len: keep track of printed string length
   */
-void id_select(const char *a, va_list args, unsigned int *len)
+void id_select(const char *a, va_list args, unsigned long long *len)
 {
 	int i;
 	id id_array[] = {
@@ -22,8 +22,6 @@ void id_select(const char *a, va_list args, unsigned int *len)
 		{'\0', NULL}
 	};
 
-	if (a == NULL || args == NULL)
-		return;
 	i = 0;
 	while (id_array[i].type)
 	{
@@ -34,4 +32,39 @@ void id_select(const char *a, va_list args, unsigned int *len)
 		}
 		i++;
 	}
+}
+
+/**
+  * _printf - function that produces output according to a format.
+  * @format: is a character string.
+  * The format string is composed of zero or more directives.
+  * Return: the number of characters printed
+  * (excluding the null byte used to end output to strings)
+  */
+int _printf(const char *format, ...)
+{
+	unsigned long long len = 0;
+	const char *a;
+	int is_format;
+	va_list args;
+
+	if (format)
+		a = format;
+	else
+		return (-1);
+	va_start(args, format);
+	while (*a)
+	{
+		is_format = (*a == '%') ? true : false; /* handle special cases later */
+		if (is_format)
+			id_select(++a, args, &len);
+		else
+		{
+			_putchar(*a);
+			len++;
+		}
+		a++;
+	}
+	va_end(args);
+	return (len);
 }
