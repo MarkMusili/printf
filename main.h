@@ -4,10 +4,12 @@
 /* IMPORTS */
 #include <stdarg.h>
 
+/** Prototypes **/
 int _printf(const char *format, ...);
-
-/* XXX */
-int _putchar(char);
+int print_c(va_list, unsigned long long *len);
+int print_s(va_list, unsigned long long *len);
+int print_d(va_list, unsigned long long *len);
+int print_i(va_list, unsigned long long *len);
 
 /**
   * struct identifier - select the function to process the format
@@ -18,7 +20,7 @@ int _putchar(char);
 typedef struct identifier
 {
 	char type;
-	int (*function)(va_list, unsigned int *);
+	int (*function)(va_list, unsigned long long *);
 } id;
 
 #endif /* MAIN_H */
