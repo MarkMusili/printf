@@ -10,6 +10,7 @@ int print_c(va_list, unsigned long long *len);
 int print_s(va_list, unsigned long long *len);
 int print_d(va_list, unsigned long long *len);
 int print_i(va_list, unsigned long long *len);
+int _putchar(char);
 
 /**
   * struct identifier - select the function to process the format
