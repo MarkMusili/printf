@@ -14,11 +14,11 @@ void id_select(const char *a, va_list args, unsigned long long *len)
 {
 	int i;
 	id id_array[] = {
-		{'c', _cprint},
-		{'s', _sprint},
-		{'i', _iprint},
-		{'d', _dprint},
-		{'%', _ctprint},
+		{'c', print_c},
+		{'s', print_s},
+		{'i', print_i},
+		{'d', print_d},
+		{'%', print_c},
 		{'\0', NULL}
 	};
 
@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*a)
 	{
-		is_format = (*a == '%') ? true : false; /* handle special cases later */
+		is_format = (*a == '%') ? 1 : 0; /* handle special cases later */
 		if (is_format)
 			id_select(++a, args, &len);
 		else
