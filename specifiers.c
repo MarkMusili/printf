@@ -53,12 +53,8 @@ int print_d(va_list args, unsigned long long *len)
 	char *dtos;
 	int i = 0;
 
-	if (!args)
-		return (-1);
 	d = va_arg(args, int);
-	if (d == NULL)
-		return (-1);
-	dtos = _itos(d);
+	/*dtos = _dtos(d);*/
 	while (dtos[i])
 	{
 		_putchar(dtos[i]);
@@ -80,12 +76,8 @@ int print_i(va_list args, unsigned long long *len)
 	char *itos;
 	int k = 0;
 
-	if (!args)
-		return (-1);
 	i = va_arg(args, double);
-	if (i == NULL)
-		return (-1);
-	itos = _itos(d);
+	/*itos = _itos(i);*/
 	while (itos[k])
 	{
 		_putchar(itos[k]);
