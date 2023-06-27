@@ -10,7 +10,7 @@
   * @args: argument list
   * @len: keep track of printed string length
   */
-void id_select(const char *a, va_list args, unsigned long long *len)
+void id_select(const char *a, va_list args, unsigned long *len)
 {
 	int i;
 	id id_array[] = {
@@ -48,7 +48,7 @@ void id_select(const char *a, va_list args, unsigned long long *len)
   */
 int _printf(const char *format, ...)
 {
-	unsigned long long len = 0;
+	unsigned long len = 0;
 	const char *a;
 	int is_format;
 	va_list args;

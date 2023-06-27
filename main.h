@@ -6,10 +6,10 @@
 
 /** Prototypes **/
 int _printf(const char *format, ...);
-int print_c(va_list args, unsigned long long *len);
-int print_s(va_list args, unsigned long long *len);
-int print_d(va_list args, unsigned long long *len);
-int print_i(va_list args, unsigned long long *len);
+int print_c(va_list args, unsigned long *len);
+int print_s(va_list args, unsigned long *len);
+int print_d(va_list args, unsigned long *len);
+int print_i(va_list args, unsigned long *len);
 
 /** Helper functions **/
 int _putchar(char);
@@ -25,7 +25,7 @@ char *_itos(double);
 typedef struct identifier
 {
 	char type;
-	int (*function)(va_list, unsigned long long *);
+	int (*function)(va_list, unsigned long *);
 } id;
 
 #endif /* MAIN_H */

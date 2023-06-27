@@ -9,7 +9,7 @@
  * @len: length of the format
  * Return: length of the variable or -1
  */
-int print_c(va_list args, unsigned long long *len)
+int print_c(va_list args, unsigned long *len)
 {
 	char c;
 
@@ -24,7 +24,7 @@ int print_c(va_list args, unsigned long long *len)
  * @len: length of the format
  * Return: length of the variable or -1
  */
-int print_s(va_list args, unsigned long long *len)
+int print_s(va_list args, unsigned long *len)
 {
 	char *s;
 	int i = 0;
@@ -47,9 +47,9 @@ int print_s(va_list args, unsigned long long *len)
  * @len: length of the format
  * Return: length of the variable or -1
  */
-int print_d(va_list args, unsigned long long *len)
+int print_d(va_list args, unsigned long *len)
 {
-	long long d;
+	long d;
 	char *dtos;
 	int i = 0;
 
@@ -71,20 +71,7 @@ int print_d(va_list args, unsigned long long *len)
  * @len: length of the format
  * Return: length of the variable or -1
  */
-int print_i(va_list args, unsigned long long *len)
+int print_i(va_list args, unsigned long *len)
 {
-	long long d;
-	char *dtos;
-	int i = 0;
-
-	d = va_arg(args, int);
-	dtos = _dtos(d);
-	while (dtos[i])
-	{
-		_putchar(dtos[i]);
-		i++;
-	}
-	free(dtos);
-	*len += i;
-	return (i);
+	return (print_d(args, len));
 }
