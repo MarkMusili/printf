@@ -68,7 +68,53 @@ int print_d(va_list args, unsigned long int *len)
 	if (num == 0)
 	{
 		_putchar('0');
-		len++;
+		*len += 1;
+		i++;
+	}
+	while (temp != 0)
+	{
+		magnitude *= 10;
+		temp /= 10;
+	}
+	while (magnitude > 1)
+	{
+		magnitude /= 10;
+		digit = num / magnitude;
+		if (digit != 0)
+		{
+			_putchar(digit + '0');
+			*len += 1;
+			i++;
+		}
+		num -= digit * magnitude;
+	}
+	return (i);
+}
+
+/**
+ * print_i - prints a decimal number
+ * @args: arguments passed
+ * @len: number of bytes printed
+ * Return: Number of characters printed
+ */
+int print_i(va_list args, unsigned long int *len)
+{
+	int i = 0;
+	int magnitude = 1;
+	int num, digit, temp;
+
+	num = va_arg(args, int);
+
+	if (num < 0)
+	{
+		_putchar('-');
+		*len += 1;
+		i++;
+	}
+	if (num == 0)
+	{
+		_putchar(0);
+		*len += 1;
 		i++;
 	}
 	while (temp != 0)

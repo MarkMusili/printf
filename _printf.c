@@ -9,13 +9,14 @@
   * @a: string to process
   * Return: pointer to function needed.
   */
-int (*id_select(const char *a))(va_list, unsigned  long int *)
+int (*id_select(const char *a))(va_list args, unsigned  long int *len)
 {
 	int i = 0;
 	id id_array[] = {
 		{'c', print_c},
 		{'s', print_s},
 		{'d', print_d},
+		{'i', print_i},
 		{0, NULL}
 	};
 
@@ -27,6 +28,11 @@ int (*id_select(const char *a))(va_list, unsigned  long int *)
 		}
 		i++;
 	}
+	if (*a == '%')
+	{
+		return (_putchar('%'));
+	}
+
 	return (NULL);
 }
 
@@ -54,7 +60,14 @@ int _printf(const char *format, ...)
 		if (*a == '%')
 		{
 			a++;
-			bytes += id_select(a)(args, &len);
+			if (*a == '%')
+			{
+				_putchar('%');
+				len += 1;
+				bytes += 1;
+			}
+			else
+				bytes += id_select(a)(args, &len);
 		}
 		else
 		{
