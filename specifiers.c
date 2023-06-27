@@ -43,7 +43,6 @@ int print_s(va_list args, unsigned long int *len)
 	*len += count;
 	return (count);
 }
-<<<<<<< HEAD
 
 /**
  * print_d - Prints integer numbers
@@ -137,5 +136,3 @@ int print_i(va_list args, unsigned long int *len)
 	}
 	return (i);
 }
-=======
->>>>>>> d3ab48dc2fbc7a85c04a513ec6361422ede3b21b

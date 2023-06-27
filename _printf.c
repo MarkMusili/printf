@@ -28,10 +28,6 @@ int (*id_select(const char *a))(va_list args, unsigned  long int *len)
 		}
 		i++;
 	}
-	if (*a == '%')
-	{
-		return (_putchar('%'));
-	}
 
 	return (NULL);
 }
