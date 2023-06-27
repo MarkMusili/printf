@@ -4,34 +4,30 @@
 #include <stdlib.h>
 
 /**
-  * id_select - iterate over the list of formats and
+  * id_select - function pointer to iterate over the list of formats and
   * select a function to execute
   * @a: string to process
-  * @args: argument list
-  * @len: keep track of printed string length
+  * Return: pointer to function needed.
   */
-void id_select(const char *a, va_list args, unsigned long long *len)
+int (*id_select(const char *a))(va_list, unsigned  long int *)
 {
-	int i;
+	int i = 0;
 	id id_array[] = {
-		{'c', _cprint},
-		{'s', _sprint},
-		{'i', _iprint},
-		{'d', _dprint},
-		{'%', _ctprint},
-		{'\0', NULL}
+		{'c', print_c},
+		{'s', print_s},
+		{'d', print_d},
+		{0, NULL}
 	};
 
-	i = 0;
 	while (id_array[i].type)
 	{
-		if (*a == id_array[i].type)
+		if (id_array[i].type == *a)
 		{
-			id_array[i].function(args, len);
-			break;
+			return (id_array[i].function);
 		}
 		i++;
 	}
+	return (NULL);
 }
 
 /**
@@ -43,9 +39,9 @@ void id_select(const char *a, va_list args, unsigned long long *len)
   */
 int _printf(const char *format, ...)
 {
-	unsigned long long len = 0;
+	unsigned long int len = 0;
+	int bytes = 0;
 	const char *a;
-	int is_format;
 	va_list args;
 
 	if (format)
@@ -53,18 +49,21 @@ int _printf(const char *format, ...)
 	else
 		return (-1);
 	va_start(args, format);
-	while (*a)
+	while (*a != '\0')
 	{
-		is_format = (*a == '%') ? true : false; /* handle special cases later */
-		if (is_format)
-			id_select(++a, args, &len);
+		if (*a == '%')
+		{
+			a++;
+			bytes += id_select(a)(args, &len);
+		}
 		else
 		{
 			_putchar(*a);
 			len++;
+			bytes++;
 		}
 		a++;
 	}
 	va_end(args);
-	return (len);
+	return (bytes);
 }
