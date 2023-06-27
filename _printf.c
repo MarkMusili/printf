@@ -18,7 +18,6 @@ void id_select(const char *a, va_list args, unsigned long long *len)
 		{'s', print_s},
 		{'i', print_i},
 		{'d', print_d},
-		{'%', print_c},
 		{'\0', NULL}
 	};
 
@@ -31,6 +30,11 @@ void id_select(const char *a, va_list args, unsigned long long *len)
 			break;
 		}
 		i++;
+	}
+	if (id_array[i].type == '\0')
+	{
+		_putchar(*a);
+		len++;
 	}
 }
 
@@ -56,8 +60,8 @@ int _printf(const char *format, ...)
 	while (*a)
 	{
 		is_format = (*a == '%') ? 1 : 0; /* handle special cases later */
-		if (is_format)
-			id_select(++a, args, &len);
+		if (is_format && *++a != '%')
+			id_select(a, args, &len);
 		else
 		{
 			_putchar(*a);

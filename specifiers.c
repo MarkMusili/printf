@@ -54,12 +54,13 @@ int print_d(va_list args, unsigned long long *len)
 	int i = 0;
 
 	d = va_arg(args, int);
-	/*dtos = _dtos(d);*/
+	dtos = _dtos(d);
 	while (dtos[i])
 	{
 		_putchar(dtos[i]);
 		i++;
 	}
+	free(dtos);
 	*len += i;
 	return (i);
 }
@@ -72,17 +73,18 @@ int print_d(va_list args, unsigned long long *len)
  */
 int print_i(va_list args, unsigned long long *len)
 {
-	double i;
-	char *itos;
-	int k = 0;
+	long long d;
+	char *dtos;
+	int i = 0;
 
-	i = va_arg(args, double);
-	/*itos = _itos(i);*/
-	while (itos[k])
+	d = va_arg(args, int);
+	dtos = _dtos(d);
+	while (dtos[i])
 	{
-		_putchar(itos[k]);
-		k++;
+		_putchar(dtos[i]);
+		i++;
 	}
-	*len += k;
-	return (k);
+	free(dtos);
+	*len += i;
+	return (i);
 }
