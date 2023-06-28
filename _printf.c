@@ -33,6 +33,8 @@ void id_select(const char *a, va_list args, unsigned long *len)
 	}
 	if (id_array[i].type == '\0')
 	{
+		if (*a == '\0')
+			return;
 		_putchar(*(a - 1));
 		_putchar(*a);
 		*len += 2;

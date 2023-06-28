@@ -27,11 +27,14 @@ int print_c(va_list args, unsigned long *len)
 int print_s(va_list args, unsigned long *len)
 {
 	char *s;
+	char *nil = "(null)";
 	int i = 0;
 
 	s = va_arg(args, char *);
-	if (s == NULL)
-		return (-1);
+	if (s == NULL || *s == '\0')
+	{
+		s = nil;
+	}
 	while (s[i])
 	{
 		_putchar(s[i]);
