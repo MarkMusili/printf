@@ -23,10 +23,6 @@ void id_select(const char *a, va_list args, unsigned long *len)
 		{'o', print_o},
 		{'x', print_x},
 		{'X', print_X},
-		{'S', print_S},
-		{'p', print_p},
-		{'r', print_r},
-		{'R', print_R},
 		{'\0', NULL}
 	};
 

@@ -23,6 +23,7 @@ int print_R(va_list args, unsigned long *len);
 /** Helper functions **/
 int _putchar(char);
 char *_dtos(int);
+void print_b_rev(unsigned int d);
 
 /**
   * struct identifier - select the function to process the format
