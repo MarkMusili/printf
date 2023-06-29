@@ -22,7 +22,7 @@ int print_R(va_list args, unsigned long *len);
 
 /** Helper functions **/
 int _putchar(char);
-char *_dtos(int);
+char *_dtos(long);
 void print_b_rev(unsigned int d);
 
 /**

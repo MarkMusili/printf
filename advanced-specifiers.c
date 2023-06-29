@@ -24,7 +24,10 @@ int print_b(va_list args, unsigned long *len)
   */
 int print_u(va_list args, unsigned long *len)
 {
-	return 0;
+	unsigned int d = va_arg(args, unsigned int);
+
+	print_d(d);
+	return (0);
 }
 
 /**
@@ -35,7 +38,7 @@ int print_u(va_list args, unsigned long *len)
   */
 int print_o(va_list args, unsigned long *len)
 {
-	return 0;
+	return (0);
 }
 
 /**
@@ -46,7 +49,7 @@ int print_o(va_list args, unsigned long *len)
   */
 int print_x(va_list args, unsigned long *len)
 {
-	return 0;
+	return (0);
 }
 
 /**
@@ -57,5 +60,5 @@ int print_x(va_list args, unsigned long *len)
   */
 int print_X(va_list args, unsigned long *len)
 {
-	return 0;
+	return (0);
 }

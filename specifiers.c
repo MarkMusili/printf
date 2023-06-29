@@ -49,7 +49,7 @@ int print_s(va_list args, unsigned long *len)
  */
 int print_d(va_list args, unsigned long *len)
 {
-	long d;
+	long long d;
 	char *dtos;
 	int i = 0;
 

@@ -6,7 +6,7 @@
  * @d: integer to convert
  * Return: char pointer
  */
-char *_dtos(int d)
+char *_dtos(long d)
 {
 	int len = 1;
 	int sign = 0;
